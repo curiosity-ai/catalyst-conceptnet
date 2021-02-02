@@ -15,10 +15,9 @@ namespace Catalyst.ConceptNet
     {
         public static readonly MessagePackSerializerOptions LZ4Standard = MessagePackSerializerOptions.Standard.WithCompression(MessagePackCompression.Lz4Block);
         private static Dictionary<Language, Assembly> _assemblies = new Dictionary<Language, Assembly>();
-        private static ConcurrentDictionary<Language, ConceptNetWords> _wordsCache = new ConcurrentDictionary<Language, ConceptNetWords>();
-        private static ConcurrentDictionary<(Language from, Language to), ConceptNetEdgesData> _edges  = new ConcurrentDictionary<(Language from, Language to), ConceptNetEdgesData>();
+        private static ConcurrentDictionary<Language, Lazy<ConceptNetWords>> _wordsCache = new ConcurrentDictionary<Language, Lazy<ConceptNetWords>>();
+        private static ConcurrentDictionary<(Language from, Language to), Lazy<ConceptNetEdgesData>> _edges  = new ConcurrentDictionary<(Language from, Language to), Lazy<ConceptNetEdgesData>>();
         private static Dictionary<PartOfSpeech, ulong> _posHashes = Enum.GetValues(typeof(PartOfSpeech)).Cast<PartOfSpeech>().ToDictionary(pos => pos, pos => pos.ToString().Hash64());
-
 
         public static void RegisterFromAssembly(Assembly assembly, Language language)
         {
@@ -58,13 +57,13 @@ namespace Catalyst.ConceptNet
 
         internal static bool TryGetEdgesData(Language fromLanguage, Language toLanguage, out ConceptNetEdgesData data)
         {
-            data = _edges.GetOrAdd((fromLanguage, toLanguage), k => TryLoadEdges(k.from, k.to, out var loadedData) ? loadedData : null);
+            data = _edges.GetOrAdd((fromLanguage, toLanguage), k => new Lazy<ConceptNetEdgesData>(() => TryLoadEdges(k.from, k.to, out var loadedData) ? loadedData : null)).Value;
             return data is object;
         }
 
         internal static bool TryGetWordsCache(Language language, out ConceptNetWords data)
         {
-            data = _wordsCache.GetOrAdd(language, k => TryLoadWords(k, out var loadedData) ? loadedData : null);
+            data = _wordsCache.GetOrAdd(language, k => new Lazy<ConceptNetWords>(() => TryLoadWords(k, out var loadedData) ? loadedData : null)).Value;
             return data is object;
         }
 
