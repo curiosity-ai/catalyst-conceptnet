@@ -33,11 +33,9 @@ namespace Catalyst.ConceptNet.Prepare
             var totalLines = 34074917;
             var readLines = 0;
 
-            var posHashes = Enum.GetValues(typeof(PartOfSpeech)).Cast<PartOfSpeech>().ToDictionary(pos => pos, pos => pos.ToString().Hash64());
-
             (ulong hash, int start, byte length) AddToCache(ReadOnlySpan<char> word, PartOfSpeech pos, Language language)
             {
-                var hash = Hashes.Combine(word.Hash64(), posHashes[pos]);
+                var hash = Loader.HashWordUnderscoreIsSpace(word, pos);
 
                 if (!words.TryGetValue(language, out var wordsForLang))
                 {

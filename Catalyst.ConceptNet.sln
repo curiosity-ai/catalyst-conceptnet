@@ -12,6 +12,34 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{9DC9F266
 		azure-devops\build-nuget.yml = azure-devops\build-nuget.yml
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalyst.ConceptNet.Bulgarian", "Catalyst.ConceptNet.Bulgarian\Catalyst.ConceptNet.Bulgarian.csproj", "{5E4AE2C9-CA60-4684-A539-83FBFCCE8F3C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalyst.ConceptNet.Chinese", "Catalyst.ConceptNet.Chinese\Catalyst.ConceptNet.Chinese.csproj", "{4CCDF655-715E-4712-9847-CEF366FDEEDA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalyst.ConceptNet.Dutch", "Catalyst.ConceptNet.Dutch\Catalyst.ConceptNet.Dutch.csproj", "{FE1BC269-50B8-4481-B409-6674234B9FC3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalyst.ConceptNet.English", "Catalyst.ConceptNet.English\Catalyst.ConceptNet.English.csproj", "{45F9A19D-E745-49F1-A45A-FAB449616262}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalyst.ConceptNet.Finnish", "Catalyst.ConceptNet.Finnish\Catalyst.ConceptNet.Finnish.csproj", "{C68786EA-CBD6-4690-B0E9-220E016CFB4C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalyst.ConceptNet.French", "Catalyst.ConceptNet.French\Catalyst.ConceptNet.French.csproj", "{F7097F1A-7FB4-4259-BB99-21CF5EA19794}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalyst.ConceptNet.German", "Catalyst.ConceptNet.German\Catalyst.ConceptNet.German.csproj", "{005734DF-A89F-4BC9-A31E-C2EA47C7B55E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalyst.ConceptNet.Italian", "Catalyst.ConceptNet.Italian\Catalyst.ConceptNet.Italian.csproj", "{7BA36D11-C76E-473A-A699-B173E23E0744}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalyst.ConceptNet.Japanese", "Catalyst.ConceptNet.Japanese\Catalyst.ConceptNet.Japanese.csproj", "{3E8D41F5-4F1A-4925-A70A-1CAD92C9F610}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalyst.ConceptNet.Norwegian", "Catalyst.ConceptNet.Norwegian\Catalyst.ConceptNet.Norwegian.csproj", "{8CFA427D-AA2C-45C7-AF48-D0AC5D0C6213}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalyst.ConceptNet.Portuguese", "Catalyst.ConceptNet.Portuguese\Catalyst.ConceptNet.Portuguese.csproj", "{4DCE0C06-C1AD-4E48-8664-1E22D481D4EF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalyst.ConceptNet.Russian", "Catalyst.ConceptNet.Russian\Catalyst.ConceptNet.Russian.csproj", "{E00D6711-5B69-4BBB-AF6D-C60459907A83}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalyst.ConceptNet.Spanish", "Catalyst.ConceptNet.Spanish\Catalyst.ConceptNet.Spanish.csproj", "{5DC8D222-8D97-4581-B498-34D6FF11BB46}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalyst.ConceptNet.Swedish", "Catalyst.ConceptNet.Swedish\Catalyst.ConceptNet.Swedish.csproj", "{9B605303-D64C-4957-9CDD-CECC2923E3BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +54,62 @@ Global
 		{9B41467E-1B23-4E3F-BA73-038317032DD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B41467E-1B23-4E3F-BA73-038317032DD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B41467E-1B23-4E3F-BA73-038317032DD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E4AE2C9-CA60-4684-A539-83FBFCCE8F3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E4AE2C9-CA60-4684-A539-83FBFCCE8F3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E4AE2C9-CA60-4684-A539-83FBFCCE8F3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E4AE2C9-CA60-4684-A539-83FBFCCE8F3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CCDF655-715E-4712-9847-CEF366FDEEDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CCDF655-715E-4712-9847-CEF366FDEEDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CCDF655-715E-4712-9847-CEF366FDEEDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CCDF655-715E-4712-9847-CEF366FDEEDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE1BC269-50B8-4481-B409-6674234B9FC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE1BC269-50B8-4481-B409-6674234B9FC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE1BC269-50B8-4481-B409-6674234B9FC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE1BC269-50B8-4481-B409-6674234B9FC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45F9A19D-E745-49F1-A45A-FAB449616262}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45F9A19D-E745-49F1-A45A-FAB449616262}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45F9A19D-E745-49F1-A45A-FAB449616262}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45F9A19D-E745-49F1-A45A-FAB449616262}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C68786EA-CBD6-4690-B0E9-220E016CFB4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C68786EA-CBD6-4690-B0E9-220E016CFB4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C68786EA-CBD6-4690-B0E9-220E016CFB4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C68786EA-CBD6-4690-B0E9-220E016CFB4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7097F1A-7FB4-4259-BB99-21CF5EA19794}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7097F1A-7FB4-4259-BB99-21CF5EA19794}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7097F1A-7FB4-4259-BB99-21CF5EA19794}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7097F1A-7FB4-4259-BB99-21CF5EA19794}.Release|Any CPU.Build.0 = Release|Any CPU
+		{005734DF-A89F-4BC9-A31E-C2EA47C7B55E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{005734DF-A89F-4BC9-A31E-C2EA47C7B55E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{005734DF-A89F-4BC9-A31E-C2EA47C7B55E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{005734DF-A89F-4BC9-A31E-C2EA47C7B55E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BA36D11-C76E-473A-A699-B173E23E0744}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BA36D11-C76E-473A-A699-B173E23E0744}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BA36D11-C76E-473A-A699-B173E23E0744}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BA36D11-C76E-473A-A699-B173E23E0744}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E8D41F5-4F1A-4925-A70A-1CAD92C9F610}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E8D41F5-4F1A-4925-A70A-1CAD92C9F610}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E8D41F5-4F1A-4925-A70A-1CAD92C9F610}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E8D41F5-4F1A-4925-A70A-1CAD92C9F610}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CFA427D-AA2C-45C7-AF48-D0AC5D0C6213}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CFA427D-AA2C-45C7-AF48-D0AC5D0C6213}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CFA427D-AA2C-45C7-AF48-D0AC5D0C6213}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CFA427D-AA2C-45C7-AF48-D0AC5D0C6213}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DCE0C06-C1AD-4E48-8664-1E22D481D4EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DCE0C06-C1AD-4E48-8664-1E22D481D4EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DCE0C06-C1AD-4E48-8664-1E22D481D4EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DCE0C06-C1AD-4E48-8664-1E22D481D4EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E00D6711-5B69-4BBB-AF6D-C60459907A83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E00D6711-5B69-4BBB-AF6D-C60459907A83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E00D6711-5B69-4BBB-AF6D-C60459907A83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E00D6711-5B69-4BBB-AF6D-C60459907A83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DC8D222-8D97-4581-B498-34D6FF11BB46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DC8D222-8D97-4581-B498-34D6FF11BB46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DC8D222-8D97-4581-B498-34D6FF11BB46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DC8D222-8D97-4581-B498-34D6FF11BB46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B605303-D64C-4957-9CDD-CECC2923E3BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B605303-D64C-4957-9CDD-CECC2923E3BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B605303-D64C-4957-9CDD-CECC2923E3BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B605303-D64C-4957-9CDD-CECC2923E3BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

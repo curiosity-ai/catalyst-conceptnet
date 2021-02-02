@@ -1,0 +1,77 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.1;netcoreapp3.1;net5.0</TargetFrameworks>
+    <Platforms>AnyCPU</Platforms>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Authors>Curiosity GmbH</Authors>
+    <Copyright>(c) Copyright 2021 Curiosity GmbH - all right reserved</Copyright>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>www.curiosity.ai</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/curiosity-ai/catalyst</RepositoryUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageId>Catalyst.ConceptNet.English</PackageId>
+    <Description>English language pack for the Catalyst.ConceptNet package.</Description>
+    <PackageTags>Natural Language Processing, NLP, Spacy, ConceptNet, English, Machine Learning, ML, Embeddings, Data Science, Big Data, Artificial Intelligence, AI, NLP Library, Neural Networks, Deep Learning</PackageTags>
+    <PackageIcon>catalyst-logo.png</PackageIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\edges-en-bg.msgpack" />
+    <None Remove="Resources\edges-en-de.msgpack" />
+    <None Remove="Resources\edges-en-en.msgpack" />
+    <None Remove="Resources\edges-en-es.msgpack" />
+    <None Remove="Resources\edges-en-fi.msgpack" />
+    <None Remove="Resources\edges-en-fr.msgpack" />
+    <None Remove="Resources\edges-en-it.msgpack" />
+    <None Remove="Resources\edges-en-ja.msgpack" />
+    <None Remove="Resources\edges-en-nl.msgpack" />
+    <None Remove="Resources\edges-en-no.msgpack" />
+    <None Remove="Resources\edges-en-pt.msgpack" />
+    <None Remove="Resources\edges-en-ru.msgpack" />
+    <None Remove="Resources\edges-en-sv.msgpack" />
+    <None Remove="Resources\edges-en-zh.msgpack" />
+    <None Remove="Resources\words-en.msgpack" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\edges-en-bg.msgpack" />
+    <EmbeddedResource Include="Resources\edges-en-de.msgpack" />
+    <EmbeddedResource Include="Resources\edges-en-en.msgpack" />
+    <EmbeddedResource Include="Resources\edges-en-es.msgpack" />
+    <EmbeddedResource Include="Resources\edges-en-fi.msgpack" />
+    <EmbeddedResource Include="Resources\edges-en-fr.msgpack" />
+    <EmbeddedResource Include="Resources\edges-en-it.msgpack" />
+    <EmbeddedResource Include="Resources\edges-en-ja.msgpack" />
+    <EmbeddedResource Include="Resources\edges-en-nl.msgpack" />
+    <EmbeddedResource Include="Resources\edges-en-no.msgpack" />
+    <EmbeddedResource Include="Resources\edges-en-pt.msgpack" />
+    <EmbeddedResource Include="Resources\edges-en-ru.msgpack" />
+    <EmbeddedResource Include="Resources\edges-en-sv.msgpack" />
+    <EmbeddedResource Include="Resources\edges-en-zh.msgpack" />
+    <EmbeddedResource Include="Resources\words-en.msgpack" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Catalyst.ConceptNet" Version="1.0.15598" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="../catalyst-logo.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="../LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
