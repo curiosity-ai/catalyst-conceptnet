@@ -7,11 +7,11 @@ using Mosaik.Core;
 
 namespace Catalyst.ConceptNet
 {
-    public static class Bulgarian
+    public static class German
     {
         public static void Register()
         {
-            Loader.RegisterFromAssembly(typeof(Bulgarian).Assembly, Language.Bulgarian);
+            Loader.RegisterFromAssembly(typeof(German).Assembly, Language.German);
         }
     }
 }
