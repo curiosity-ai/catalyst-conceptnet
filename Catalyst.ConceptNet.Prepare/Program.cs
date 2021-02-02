@@ -106,20 +106,24 @@ namespace Catalyst.ConceptNet.Prepare
                     {
                         var fromWord = from.Slice(4 + fromLangLen);
                         var ixf = fromWord.IndexOf('/');
+                        //  /c/en/web/n/wn/artifact
 
-                        var fromPOS = GetPOS(from);
-                        var toPOS   = GetPOS(to);
+                        var fromPOS = PartOfSpeech.X;
 
                         if (ixf > 0)
                         {
+                            fromPOS = GetPOS(fromWord.Slice(ixf));
                             fromWord = fromWord.Slice(0, ixf);
                         }
 
                         var toWord = to.Slice(4 + toLangLen);
                         var ixt = toWord.IndexOf('/');
-                        
-                        if(ixt > 0)
+
+                        var toPOS = PartOfSpeech.X;
+
+                        if (ixt > 0)
                         {
+                            toPOS   = GetPOS(toWord.Slice(ixt));
                             toWord = toWord.Slice(0, ixt);
                         }
                         ConceptNetRelation relation;
@@ -248,10 +252,18 @@ namespace Catalyst.ConceptNet.Prepare
 
             PartOfSpeech GetPOS(ReadOnlySpan<char> concept)
             {
-                if(concept[concept.Length-2] == '/')
+                if(concept.Length == 0)
                 {
-                    var last = concept[concept.Length - 1];
-                    switch (last)
+                    return PartOfSpeech.X;
+                }
+
+                var nextSlash = concept.Slice(1).IndexOf('/');
+
+                if (nextSlash < 0 || nextSlash == 1)
+                {
+                    var pos = concept.Slice(1, 1)[0];
+
+                    switch (pos)
                     {
                         case 'n': return PartOfSpeech.NOUN;
                         case 'v': return PartOfSpeech.VERB;
