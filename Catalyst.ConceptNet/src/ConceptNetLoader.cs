@@ -30,7 +30,7 @@ namespace Catalyst.ConceptNet
         internal static TType GetResource<TType>(Assembly assembly, Language language, string fileName)
         {
             using var stream = assembly.GetManifestResourceStream($"Catalyst.ConceptNet.{language}.Resources." + fileName);
-            return MessagePackSerializer.Deserialize<TType>(stream);
+            return MessagePackSerializer.Deserialize<TType>(stream, LZ4Standard);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
