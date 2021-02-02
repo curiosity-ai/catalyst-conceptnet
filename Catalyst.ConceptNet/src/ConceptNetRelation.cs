@@ -1,4 +1,4 @@
-﻿namespace Catalyst.ConceptNet.Prepare
+﻿namespace Catalyst.ConceptNet
 {
     public enum ConceptNetRelation
     {

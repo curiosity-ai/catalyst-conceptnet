@@ -1,6 +1,6 @@
 ﻿using MessagePack;
 
-namespace Catalyst.ConceptNet.Prepare
+namespace Catalyst.ConceptNet
 {
     [MessagePackObject]
     public struct ConceptNetEdge

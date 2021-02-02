@@ -2,7 +2,7 @@
 using Mosaik.Core;
 using System.Collections.Generic;
 
-namespace Catalyst.ConceptNet.Prepare
+namespace Catalyst.ConceptNet
 {
     [MessagePackObject]
     public class ConceptNetEdgesData

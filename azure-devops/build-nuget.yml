@@ -33,11 +33,10 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'pack'
-    packagesToPack: '**/*.csproj'
+    packagesToPack: '**/Catalyst.ConceptNet.csproj'
     versioningScheme: 'off'
     configuration: 'Release'
     buildProperties: 'Version="1.0.$(build.buildId)";AllowUnsafeBlocks="True";LangVersion="latest"'
-    verbosityPack: 'Diagnostic'
     nobuild: true
 
 - task: NuGetCommand@2

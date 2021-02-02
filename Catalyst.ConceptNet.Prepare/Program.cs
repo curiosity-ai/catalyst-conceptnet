@@ -14,7 +14,6 @@ namespace Catalyst.ConceptNet.Prepare
     class Program
     {
 
-        internal static readonly MessagePackSerializerOptions LZ4Standard = MessagePackSerializerOptions.Standard.WithCompression(MessagePackCompression.Lz4Block);
 
         static void Main(string[] args)
         {
@@ -223,7 +222,7 @@ namespace Catalyst.ConceptNet.Prepare
 
                     using (var f = File.OpenWrite(Path.Combine(langPath, $"edges-{Languages.EnumToCode(lang)}-{Languages.EnumToCode(toLang)}.msgpack")))
                     {
-                        MessagePackSerializer.Serialize(f, edgesData, LZ4Standard);
+                        MessagePackSerializer.Serialize(f, edgesData, Loader.LZ4Standard);
                         f.Flush();
                     }
                 }
@@ -231,7 +230,7 @@ namespace Catalyst.ConceptNet.Prepare
 
                 using(var f = File.OpenWrite(Path.Combine(langPath, $"words-{Languages.EnumToCode(lang)}.msgpack")))
                 {
-                    MessagePackSerializer.Serialize(f, wordsCache, LZ4Standard);
+                    MessagePackSerializer.Serialize(f, wordsCache, Loader.LZ4Standard);
                     f.Flush();
                 }
             }

@@ -3,7 +3,7 @@ using Mosaik.Core;
 using System;
 using System.Collections.Generic;
 
-namespace Catalyst.ConceptNet.Prepare
+namespace Catalyst.ConceptNet
 {
     [MessagePackObject]
     public class ConceptNetWords
