@@ -3,7 +3,7 @@ variables:
   buildConfiguration: 'Release'
 
 trigger:
-- master
+- main
 
 pool:
   vmImage: 'windows-latest'
@@ -21,8 +21,8 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'restore'
-    projects: '$(project)'
-    displayName: 'restore nuget'
+    projects: '**/*.sln'
+  displayName: 'restore nuget'
 
 - task: DotNetCoreCLI@2
   inputs:
@@ -40,9 +40,9 @@ steps:
     nobuild: true
 
 - task: NuGetCommand@2
+  displayName: 'push nuget'
   inputs:
     command: 'push'
     packagesToPush: '**/*.nupkg'
-    displayName: 'push nuget'
     nuGetFeedType: 'external'
     publishFeedCredentials: 'nuget-curiosity'
