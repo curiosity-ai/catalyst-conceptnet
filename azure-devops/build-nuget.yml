@@ -1,0 +1,49 @@
+variables:
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+- task: NuGetToolInstaller@1
+
+- task: UseDotNet@2
+  displayName: 'Use .NET Core sdk'
+  inputs:
+    packageType: sdk
+    version: 5.0.102
+    installationPath: $(Agent.ToolsDirectory)/dotnet
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'restore'
+    projects: '$(project)'
+    displayName: 'restore nuget'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '**/*.sln'
+    arguments: '-c $(buildConfiguration) /p:Version=1.0.$(build.buildId)  /p:AllowUnsafeBlocks=True /p:LangVersion=latest'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'pack'
+    packagesToPack: '**/*.csproj'
+    versioningScheme: 'off'
+    configuration: 'Release'
+    buildProperties: 'Version="1.0.$(build.buildId)";AllowUnsafeBlocks="True";LangVersion="latest"'
+    verbosityPack: 'Diagnostic'
+    nobuild: true
+
+- task: NuGetCommand@2
+  inputs:
+    command: 'push'
+    packagesToPush: '**/*.nupkg'
+    displayName: 'push nuget'
+    nuGetFeedType: 'external'
+    publishFeedCredentials: 'nuget-curiosity'

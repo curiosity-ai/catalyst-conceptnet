@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Catalyst.ConceptNet", "Catalyst.ConceptNet\Catalyst.ConceptNet.csproj", "{D8DA7DE1-1CBF-422E-8163-2EEB6DE42A99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalyst.ConceptNet.Prepare", "Catalyst.ConceptNet.Prepare\Catalyst.ConceptNet.Prepare.csproj", "{9B41467E-1B23-4E3F-BA73-038317032DD9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{9DC9F266-3225-4FB7-8765-64EDA7B914FE}"
+	ProjectSection(SolutionItems) = preProject
+		azure-devops\build-nuget.yml = azure-devops\build-nuget.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D8DA7DE1-1CBF-422E-8163-2EEB6DE42A99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8DA7DE1-1CBF-422E-8163-2EEB6DE42A99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8DA7DE1-1CBF-422E-8163-2EEB6DE42A99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8DA7DE1-1CBF-422E-8163-2EEB6DE42A99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B41467E-1B23-4E3F-BA73-038317032DD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B41467E-1B23-4E3F-BA73-038317032DD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B41467E-1B23-4E3F-BA73-038317032DD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B41467E-1B23-4E3F-BA73-038317032DD9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FDBE4AEB-2A68-4FB9-B923-56220EEF741E}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,49 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.1;netcoreapp3.1;net5.0</TargetFrameworks>
+    <Platforms>AnyCPU</Platforms>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Authors>Curiosity GmbH</Authors>
+    <Copyright>(c) Copyright 2021 Curiosity GmbH - all right reserved</Copyright>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>www.curiosity.ai</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/curiosity-ai/catalyst</RepositoryUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageId>Catalyst.ConceptNet</PackageId>
+    <Description>ConceptNet extension for Catalyst. You need to install your language packages as well, such as Catalyst.ConceptNet.English</Description>
+    <PackageTags>Natural Language Processing, NLP, Spacy, ConceptNet, Machine Learning, ML, Embeddings, Data Science, Big Data, Artificial Intelligence, AI, NLP Library, Neural Networks, Deep Learning</PackageTags>
+    <PackageIcon>catalyst-logo.png</PackageIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Catalyst" Version="0.0.15579" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="catalyst-logo.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  
+  
+  <ItemGroup>
+    <None Include="$(SolutionDir)/LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+      <_Parameter1>Catalyst.ConceptNet.Prepare</_Parameter1>
+    </AssemblyAttribute>
+  </ItemGroup>
+  
+</Project>
