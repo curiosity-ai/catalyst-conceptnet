@@ -21,7 +21,7 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'restore'
-    projects: '$(project)'
+    projects: '**/*.sln'
   displayName: 'restore nuget'
 
 - task: DotNetCoreCLI@2
