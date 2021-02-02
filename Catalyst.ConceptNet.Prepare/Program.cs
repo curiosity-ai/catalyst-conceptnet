@@ -55,7 +55,17 @@ namespace Catalyst.ConceptNet.Prepare
                         wordCache[language] = cacheForLang;
                     }
                     var start = cacheForLang.Length;
-                    cacheForLang.Append(word);
+                    foreach(var c in word)
+                    {
+                        if (c == '_')
+                        {
+                            cacheForLang.Append(' ');
+                        }
+                        else
+                        {
+                            cacheForLang.Append(c);
+                        }
+                    }
                     var len = (byte)(cacheForLang.Length - start);
                     wordsForLang[hash] = (start, len, (byte)pos);
                     return (hash, start, len);

@@ -9,22 +9,31 @@ namespace Catalyst
 {
     public static class ConceptNetGraph
     {
-        public static IEnumerable<(string Word, PartOfSpeech PartOfSpeech, float Weight)> Get(string word, Language documentLanguage, Language targetLanguage, ConceptNetRelation relationType, PartOfSpeech partOfSpeech = PartOfSpeech.NOUN, bool doNotThrow = false)
+        public static IEnumerable<(string Word, PartOfSpeech PartOfSpeech, float Weight)> Get(string word, Language documentLanguage, Language targetLanguage, ConceptNetRelation relationType, PartOfSpeech partOfSpeech = PartOfSpeech.NOUN, bool includeMissingPartOfSpeech = true, bool doNotThrow = false)
         {
-            return Get(word.AsSpan(), documentLanguage, targetLanguage, relationType, partOfSpeech);
+            return Get(word.AsSpan(), documentLanguage, targetLanguage, relationType, partOfSpeech, includeMissingPartOfSpeech, doNotThrow);
         }
 
-        public static IEnumerable<(string Word, PartOfSpeech PartOfSpeech, float Weight)> Get(ReadOnlySpan<char> word, Language documentLanguage, Language targetLanguage, ConceptNetRelation relationType, PartOfSpeech partOfSpeech = PartOfSpeech.NOUN, bool doNotThrow = false)
+        public static IEnumerable<(string Word, PartOfSpeech PartOfSpeech, float Weight)> Get(ReadOnlySpan<char> word, Language documentLanguage, Language targetLanguage, ConceptNetRelation relationType, PartOfSpeech partOfSpeech = PartOfSpeech.NOUN, bool includeMissingPartOfSpeech = true, bool doNotThrow = false)
         {
             if (Loader.TryGetWordsCache(targetLanguage, out var words))
             {
                 if (Loader.TryGetEdgesData(documentLanguage, targetLanguage, out var edgesData))
                 {
                     var wHash = Loader.HashWordUnderscoreIsSpace(word, partOfSpeech);
-                    var xHash = Loader.HashWordUnderscoreIsSpace(word, PartOfSpeech.X);
-
                     var wEdges = edgesData.GetEdges(relationType, wHash);
-                    var xEdges = edgesData.GetEdges(relationType, xHash);
+
+                    ReadOnlySpan<ConceptNetEdge> xEdges;
+
+                    if (includeMissingPartOfSpeech)
+                    {
+                        var xHash = Loader.HashWordUnderscoreIsSpace(word, PartOfSpeech.X);
+                        xEdges = edgesData.GetEdges(relationType, xHash);
+                    }
+                    else
+                    {
+                        xEdges = ReadOnlySpan<ConceptNetEdge>.Empty;
+                    }
 
                     if (wEdges.Length > 0 || xEdges.Length > 0)
                     {
@@ -52,14 +61,14 @@ namespace Catalyst
                 }
                 else
                 {
-                    if (doNotThrow) return Enumerable.Empty<(string, PartOfSpeech, float)>();
+                    if (!doNotThrow) return Enumerable.Empty<(string, PartOfSpeech, float)>();
 
                     throw new Exception($"The data package for the language {documentLanguage} was not found. Did you install the correct NuGet Package: (https://www.nuget.org/packages/Catalyst.ConceptNet.{documentLanguage}) ? If the package is installed and loaded, then the language pair might not exist in it.");
                 }
             }
             else
             {
-                if (doNotThrow) return Enumerable.Empty<(string, PartOfSpeech, float)>();
+                if (!doNotThrow) return Enumerable.Empty<(string, PartOfSpeech, float)>();
 
                 throw new Exception($"The data package for the language {targetLanguage} was not found. Did you install the correct NuGet Package: (https://www.nuget.org/packages/Catalyst.ConceptNet.{targetLanguage}) ?");
             }
