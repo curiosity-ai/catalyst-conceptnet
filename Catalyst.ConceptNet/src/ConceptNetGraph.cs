@@ -9,12 +9,12 @@ namespace Catalyst
 {
     public static class ConceptNetGraph
     {
-        public static IEnumerable<(string Word, PartOfSpeech PartOfSpeech, float Weight)> Get(string word, Language documentLanguage, Language targetLanguage, ConceptNetRelation relationType, PartOfSpeech partOfSpeech = PartOfSpeech.NOUN, bool includeMissingPartOfSpeech = true, bool doNotThrow = false)
+        public static IEnumerable<(string Word, PartOfSpeech PartOfSpeech, float Weight)> Get(string word, Language documentLanguage, Language targetLanguage, ConceptNetRelation relationType, PartOfSpeech partOfSpeech = PartOfSpeech.NOUN, bool includeMissingPartOfSpeech = false, bool doNotThrow = false)
         {
             return Get(word.AsSpan(), documentLanguage, targetLanguage, relationType, partOfSpeech, includeMissingPartOfSpeech, doNotThrow);
         }
 
-        public static IEnumerable<(string Word, PartOfSpeech PartOfSpeech, float Weight)> Get(ReadOnlySpan<char> word, Language documentLanguage, Language targetLanguage, ConceptNetRelation relationType, PartOfSpeech partOfSpeech = PartOfSpeech.NOUN, bool includeMissingPartOfSpeech = true, bool doNotThrow = false)
+        public static IEnumerable<(string Word, PartOfSpeech PartOfSpeech, float Weight)> Get(ReadOnlySpan<char> word, Language documentLanguage, Language targetLanguage, ConceptNetRelation relationType, PartOfSpeech partOfSpeech = PartOfSpeech.NOUN, bool includeMissingPartOfSpeech = false, bool doNotThrow = false)
         {
             if (Loader.TryGetWordsCache(targetLanguage, out var words))
             {
