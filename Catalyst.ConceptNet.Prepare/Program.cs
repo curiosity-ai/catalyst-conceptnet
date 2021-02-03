@@ -9,12 +9,8 @@ using UID;
 
 namespace Catalyst.ConceptNet.Prepare
 {
-
-
     class Program
     {
-
-
         static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.UTF8;
@@ -92,20 +88,24 @@ namespace Catalyst.ConceptNet.Prepare
                      * 
                      */
 
-                    var line = sr.ReadLine().AsSpan();
-                    
+                    var lineSpan = sr.ReadLine().AsSpan();
+
+
                     readLines++;
 
-                    var parts = line.Split('\t');
+                    var parts = lineSpan.Split('\t');
                     parts.MoveNext();
-                    parts.MoveNext(); var edgeType = line.Slice(parts.Current.Start.Value + 3, parts.Current.End.Value - parts.Current.Start.Value - 3);
-                    parts.MoveNext(); var from     = line.Slice(parts.Current.Start.Value, parts.Current.End.Value - parts.Current.Start.Value);
-                    parts.MoveNext(); var to       = line.Slice(parts.Current.Start.Value, parts.Current.End.Value - parts.Current.Start.Value);
+                    parts.MoveNext(); var edgeType = lineSpan.Slice(parts.Current.Start.Value + 3, parts.Current.End.Value - parts.Current.Start.Value - 3);
+                    parts.MoveNext(); var from     = lineSpan.Slice(parts.Current.Start.Value, parts.Current.End.Value - parts.Current.Start.Value);
+                    parts.MoveNext(); var to       = lineSpan.Slice(parts.Current.Start.Value, parts.Current.End.Value - parts.Current.Start.Value);
 
                     if (from[1] == 'c' && to[1] == 'c' &&  TryGetLang(from.Slice(3, 3), out var fromLangLen, out var fromLang) && TryGetLang(to.Slice(3, 3), out var toLangLen, out var toLang))
                     {
                         var fromWord = from.Slice(4 + fromLangLen);
-                        var ixf = fromWord.IndexOf('/');
+                        var ixf      = fromWord.IndexOf('/');
+
+                        var dataSource = GetSource(lineSpan.Slice(lineSpan.IndexOf('{')));
+
                         //  /c/en/web/n/wn/artifact
 
                         var fromPOS = PartOfSpeech.X;
@@ -137,7 +137,6 @@ namespace Catalyst.ConceptNet.Prepare
                             relation = Enum.Parse<ConceptNetRelation>(new string(edgeType));
                         }
 
-
                         var key = (fromLang, toLang, relation);
 
                         if (!relationships.TryGetValue(key, out var edges))
@@ -146,19 +145,17 @@ namespace Catalyst.ConceptNet.Prepare
                             relationships[key] = edges;
                         }
 
-
                         var fromHash = AddToCache(fromWord, fromPOS, fromLang);
                         var toHash   = AddToCache(toWord, toPOS, toLang);
 
                         float weightFloat = 0f;
 
-                        var weightIndex = line.LastIndexOf(':') - "weight\":".Length;
+                        var weightIndex = lineSpan.LastIndexOf(':') - "weight\":".Length;
 
-                        if (line[weightIndex + 1] == 'w' && line[weightIndex + 2] == 'e' && line[weightIndex + 3] == 'i')
+                        if (lineSpan[weightIndex + 1] == 'w' && lineSpan[weightIndex + 2] == 'e' && lineSpan[weightIndex + 3] == 'i')
                         {
-                            weightFloat = float.Parse(line.Slice(weightIndex + "\"weight\": ".Length, line.Length - weightIndex - "\"weight\": ".Length - 1));
+                            weightFloat = float.Parse(lineSpan.Slice(weightIndex + "\"weight\": ".Length, lineSpan.Length - weightIndex - "\"weight\": ".Length - 1));
                         }
-
 
                         byte weight = (byte)(weightFloat * 100);
 
@@ -166,12 +163,12 @@ namespace Catalyst.ConceptNet.Prepare
                         if (edges.TryGetValue(fromHash.hash, out var existingEdges))
                         {
                             Array.Resize(ref existingEdges, existingEdges.Length + 1);
-                            existingEdges[existingEdges.Length - 1] = new  ConceptNetEdge(toHash.hash, weight);
+                            existingEdges[existingEdges.Length - 1] = new  ConceptNetEdge(toHash.hash, weight, dataSource);
                             edges[fromHash.hash] = existingEdges;
                         }
                         else
                         {
-                            edges[fromHash.hash] = new ConceptNetEdge[] { new ConceptNetEdge(toHash.hash, weight) };
+                            edges[fromHash.hash] = new ConceptNetEdge[] { new ConceptNetEdge(toHash.hash, weight, dataSource) };
                         }
 
                         if (readLines % 500 == 0)
@@ -274,6 +271,49 @@ namespace Catalyst.ConceptNet.Prepare
                 }
 
                 return PartOfSpeech.X;
+            }
+
+            ConceptNetSource GetSource(ReadOnlySpan<char> jsonPart)
+            {
+                var ix = jsonPart.IndexOf("/d/", StringComparison.InvariantCultureIgnoreCase);
+                
+                if (ix < 0)
+                {
+                    throw new Exception("Missing Source: " + new string(jsonPart));
+                }
+
+                jsonPart = jsonPart.Slice(ix + 3);
+                
+                if (jsonPart.Contains("conceptnet/", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    if (jsonPart.Contains("conceptnet/4/en", StringComparison.InvariantCultureIgnoreCase)) return ConceptNetSource.ConceptNetEnglishV4;
+                    if (jsonPart.Contains("conceptnet/4/pt", StringComparison.InvariantCultureIgnoreCase)) return ConceptNetSource.ConceptNetPortugueseV4;
+                    if (jsonPart.Contains("conceptnet/4/es", StringComparison.InvariantCultureIgnoreCase)) return ConceptNetSource.ConceptNetSpanishV4;
+                    if (jsonPart.Contains("conceptnet/4/fr", StringComparison.InvariantCultureIgnoreCase)) return ConceptNetSource.ConceptNetFrenchV4;
+                    if (jsonPart.Contains("conceptnet/4/it", StringComparison.InvariantCultureIgnoreCase)) return ConceptNetSource.ConceptNetItalianV4;
+                    if (jsonPart.Contains("conceptnet/4/hu", StringComparison.InvariantCultureIgnoreCase)) return ConceptNetSource.ConceptNetHungarianV4;
+                    if (jsonPart.Contains("conceptnet/4/ko", StringComparison.InvariantCultureIgnoreCase)) return ConceptNetSource.ConceptNetKoreanV4;
+                    if (jsonPart.Contains("conceptnet/4/ja", StringComparison.InvariantCultureIgnoreCase)) return ConceptNetSource.ConceptNetJapaneseV4;
+                    if (jsonPart.Contains("conceptnet/4/zh", StringComparison.InvariantCultureIgnoreCase)) return ConceptNetSource.ConceptNetChineseV4;
+                    if (jsonPart.Contains("conceptnet/4/nl", StringComparison.InvariantCultureIgnoreCase)) return ConceptNetSource.ConceptNetDutchV4;
+                }
+                else if (jsonPart.Contains("wiktionary/", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    if (jsonPart.Contains("wiktionary/en", StringComparison.InvariantCultureIgnoreCase)) return ConceptNetSource.WiktionaryEnglish;
+                    if (jsonPart.Contains("wiktionary/fr", StringComparison.InvariantCultureIgnoreCase)) return ConceptNetSource.WiktionaryFrench;
+                    if (jsonPart.Contains("wiktionary/de", StringComparison.InvariantCultureIgnoreCase)) return ConceptNetSource.WiktionaryGerman;
+                }
+                else
+                {
+                    if (jsonPart.Contains("dbpedia", StringComparison.InvariantCultureIgnoreCase))       return ConceptNetSource.DBpedia;
+                    if (jsonPart.Contains("jmdict", StringComparison.InvariantCultureIgnoreCase))        return ConceptNetSource.JMDict;
+                    if (jsonPart.Contains("opencyc", StringComparison.InvariantCultureIgnoreCase))       return ConceptNetSource.OpenCyc;
+                    if (jsonPart.Contains("verbosity", StringComparison.InvariantCultureIgnoreCase))     return ConceptNetSource.Verbosity;
+                    if (jsonPart.Contains("wordnet", StringComparison.InvariantCultureIgnoreCase))       return ConceptNetSource.WordNet;
+                    if (jsonPart.Contains("kyoto_yahoo", StringComparison.InvariantCultureIgnoreCase))   return ConceptNetSource.KyotoYahoo;
+                    if (jsonPart.Contains("cc_cedict", StringComparison.InvariantCultureIgnoreCase))     return ConceptNetSource.CCCedict;
+                }
+                throw new Exception("Missing Source: " + new string(jsonPart));
             }
 
 

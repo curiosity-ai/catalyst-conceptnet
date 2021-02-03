@@ -1,0 +1,40 @@
+﻿namespace Catalyst.ConceptNet
+{
+    public enum ConceptNetSource
+    {
+        ConceptNetEnglishV4,
+        ConceptNetPortugueseV4,
+        ConceptNetSpanishV4,
+        ConceptNetFrenchV4,
+        ConceptNetItalianV4,
+        ConceptNetHungarianV4,
+        ConceptNetKoreanV4,
+        ConceptNetJapaneseV4,
+        ConceptNetChineseV4,
+        ConceptNetDutchV4,
+        DBpedia,
+        JMDict,
+        OpenCyc,
+        Verbosity,
+        WordNet,
+        WiktionaryEnglish,
+        WiktionaryFrench,
+        WiktionaryGerman,
+        KyotoYahoo,
+        CCCedict,
+
+        //'/d/conceptnet/4/en',
+        //'/d/conceptnet/4/pt',
+        //'/d/conceptnet/4/ja',
+        //'/d/conceptnet/4/zh',
+        //'/d/conceptnet/4/nl',
+        //'/d/dbpedia',
+        //'/d/jmdict',
+        //'/d/opencyc',
+        //'/d/verbosity',
+        //'/d/wordnet',
+        //'/d/wiktionary/en',
+        //'/d/wiktionary/fr',
+        //'/d/wiktionary/de',
+    }
+}
