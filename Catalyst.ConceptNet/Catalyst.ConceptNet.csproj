@@ -21,7 +21,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Catalyst" Version="0.0.15579" />
+    <PackageReference Include="Catalyst" Version="1.0.30950" />
   </ItemGroup>
 
   <ItemGroup>
