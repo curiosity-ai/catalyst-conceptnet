@@ -53,7 +53,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Catalyst.ConceptNet" Version="1.0.15657" />
+    <PackageReference Include="Catalyst.ConceptNet" Version="1.0.31049" />
   </ItemGroup>
 
   <ItemGroup>
